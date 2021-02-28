@@ -1,0 +1,20 @@
+.center {
+    max-width: 90rem;
+    margin: 50px;
+    padding: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#outer-box {
+    background-color: #E7ABAF;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#inner-box {
+    background-color: #851118;
+
+}
