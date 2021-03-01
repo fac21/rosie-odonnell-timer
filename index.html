@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rosie's Pomodoro Timer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div main id="outer-box" class="center">
-    <div id="inner-box" class="center">
-<section>
-    <img src="tomato.png" class="tomato">
-    <h1 id=timer>25:00</h1>
-    <img src="tomato.png" class="tomato">
-</section>
-<section>
-    <button id="start-button">START</button>
-    <button id="restart-button">RESTART</button>
-</section>
-</div>
-</div>
+<main id="outer-box" class="padding-sm">
+    <div id="inner-box">
+        <section id="countdown" class="padding-sm">
+            <img src="tomato.png" class="tomato">
+            <h1 id=timer>25:00</h1>
+            <img src="tomato.png" class="tomato">
+        </section>
+        <section id="buttons">
+            <button id="start-button">START</button>
+            <button id="restart-button">RESTART</button>
+        </section>
+        </div>
+</main>
 </body>
 </html>

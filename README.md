@@ -65,3 +65,36 @@ Now I had all of my elements on the page:
 ``` HTML
   <link rel="stylesheet" href="style.css">
   ```
+
+I wanted to put my new CSS learnigns into practice, so focused on including center class and stack class:
+
+``` CSS
+.center {
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.width-sm {
+    max-width: 40rem;
+  }
+```
+
+``` CSS
+.stack > * {
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+  }
+```
+
+You'll notice that I haven't used the (adjacent sibling combinator)[https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator] and that's because for this simple design, I did want space above my elements, not just between them. The **adjacent sibling combinator** means the margin you set isn't applied on top of the top element, but I wanted it to be, which is why I've used the single * to represent the element.
+
+After using the stack class to set the margins on my page, I needed to do the same for padding, which begged the question, *can we use stack to set padding too, and if so, how do we do that if we've already used it for margins?*
+
+We can apply multiple classes to a single element in HTML, so I decided to try and create some universal padding classes by emulating the stack class structure and apply these to the same elements, alongside our stack classes:
+
+We add multiple classes to an element by separating the class names with a comma:
+
+```HTML
+<div main id="outer-box" class="center, stack">
+```
