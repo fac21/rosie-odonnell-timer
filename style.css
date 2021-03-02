@@ -57,8 +57,8 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     margin-left: 4rem;
     margin-right: 4rem;
 }
@@ -68,7 +68,8 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 2rem;
     margin-bottom: 2rem;
     margin-left: 2rem;
@@ -78,15 +79,15 @@
 #countdown {
     display: flex;
     flex-direction: row;
- 
+    justify-content: space-between;
 }
 
-#timer {
+#time-remaining {
     font-family: inter;
-    font-weight: normal;
+    font-weight: medium;
     color: white;
     font-size: 80px;
-    margin-top: 0%;
+    
 }
 
 img {
@@ -120,4 +121,8 @@ button {
 
 #restart-button {
     background-color: #F15B6C;
+}
+
+#pause-button {
+    background-color:#E7ABAF;
 }

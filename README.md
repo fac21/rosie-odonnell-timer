@@ -98,3 +98,54 @@ We add multiple classes to an element by separating the class names with a comma
 ```HTML
 <div main id="outer-box" class="center, stack">
 ```
+
+
+I found writing the CSS very difficult this week, especially when put boxes inside boxes.
+My main issues were around padding and margins.
+In the end, I decided to leave my CSS as it was and move onto the javascript.
+
+
+
+
+### Making my page talk
+
+4. The first thing I did to approach my javascript was to write psuedo code for everything I needed to do:
+
+```Javascript
+// 1. When start button is clicked, timer to begin counting down from 25:00 to 00:00.
+// 2. When timer reaches 00:00, automatically start a new countdown from 05:00 to 00:00.
+// 3. When that first timer reaches 00:00, shake the tomatoes and make a noise.
+// 4. When the five minute timer reaches 00:00, start a new 25:00 timer, and make a honking sound.
+// 5. When the start button is clicked, change the inner text to 'pause', and vise versa when 'pause is clicked'.
+// 6. When the restart button is clicked, reset the timer to the original 25:00 count.
+```
+
+I spent a long time sitting and thinking of the best order to tackle this problem in.
+I knew that although I have pieces of the necessary knowledge in my head already, I'd also need to rely on the online community to get things working.
+
+I decided that first of all, I wanted to get the countdown timer working. To create my digital clock, I used (this codewars challenge)[https://www.codewars.com/kata/52685f7382004e774f0001f7] but altered it to remove the hours part.
+
+
+After sleeping on it, I went back to my counter and realised my problem:
+
+I got my countdown working (although I still needed to add the 0 in front of single digits):
+``` Javascript
+function timer25Function() {
+  is25ClockTicking = true;
+
+    if(seconds > 0) {
+        seconds--;
+    } else if(minutes > 0 && seconds <= 0) {
+        seconds = 59;
+        minutes--;
+    }  else if (minutes <=0 && seconds <=0) {
+          clearInterval();
+    }
+timeRemaining.innerText = `${minutes}:${seconds}`
+```
+
+but what I wanted now was for my timer5Function to be called once this function had finished, so that the timer would start counting down from 5:00. The reason I wanted to do this, is because I want there to be continous loop between the 25:00 and 5:00 minute countdowns. If I just reset the time to be 5:00 and countdown, then at the end of that coutnodwn, I'd need to respecify 25:00 etc. The code would never end. However, I thought that if at the end of the two functions, it would point to the other one, then that loop would happen automaticall. 
+
+### Learnings
+
+- CSS is hard!
