@@ -88,31 +88,24 @@ function timer25Function() {
           } else if(minutes > 0 && seconds <= 0) {
               seconds = 59;
               minutes--;
-           }
-
-          
-          timeRemaining.innerText = addZero();
+        }
+        
+    timeRemaining.innerText = addZero();
     
       if (minutes <= 0 && seconds <=0) {
-      clearInterval(timer25Function);
-      is25ClockTicking = false;
-        // HERE I WANT TO SEND YOU TO THE 5 MINUTE FUNCTION, BUT IT EXCEEDS CALLSTACK
-
-      }
-      console.log(is25ClockTicking)
-    }, 
-          1000)
-    }
+          clearInterval(timer25Function);
+          is25ClockTicking = false;
+          } //console.log(is25ClockTicking)
+    }, 1000)
+  }
     
-
-// CALLBACK FUNCTION FOR 25 MINUTE COUNTDOWN
 // THIS WILL BE MY FUNCTION SO THAT THE 25 MINUTE COUNTDOWN TRIGGERS THE 5 MINUTE COUNTDOWN AT 00:00
 
 function countdown() {
   is25ClockTicking = true;
   startTime(1500);
 
-  // first function
+  // first function (a copy of the 25 min function above)
   var timing = setInterval(function() { 
       if(seconds > 0) {
           seconds--;
@@ -121,18 +114,15 @@ function countdown() {
           minutes--;
        }
       
-       timeRemaining.innerText = addZero();
+    timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
 
-  if (minutes <= 0 && seconds <=0) {
-  timer5Function();
-  clearInterval(timing);
-  is25ClockTicking = false;
+      if (minutes <= 0 && seconds <=0) {
+      timer5Function();    // If our countdown has reached zero, start our 5:00 countdown function
+      clearInterval(timing); // Clear the timing function
+      is25ClockTicking = false; //Let our buttons know the 25 minute funtion is not happening
     
-  }
-  console.log(is25ClockTicking)
-}, 
-      1000);
-console.log(timer5Function);  
+      } //console.log(is25ClockTicking)
+}, 1000); //console.log(timer5Function);  
 }
 
 //MY PAUSE BUTTON
