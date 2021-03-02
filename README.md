@@ -146,6 +146,67 @@ timeRemaining.innerText = `${minutes}:${seconds}`
 
 but what I wanted now was for my timer5Function to be called once this function had finished, so that the timer would start counting down from 5:00. The reason I wanted to do this, is because I want there to be continous loop between the 25:00 and 5:00 minute countdowns. If I just reset the time to be 5:00 and countdown, then at the end of that coutnodwn, I'd need to respecify 25:00 etc. The code would never end. However, I thought that if at the end of the two functions, it would point to the other one, then that loop would happen automaticall. 
 
+
+### Callbacks
+
+I worked hard on getting a callback function to work this week, in order to call the 5 minute countdown function once the 25 minute countdown function had completed.
+I started by creating two separate functions for. Here's one of them:
+
+``` Javascript 
+ function timer25Function() {
+      is25ClockTicking = true;
+      startTime(1500);
+    
+      setInterval
+          (function() { if(seconds > 0) {
+              seconds--;
+          } else if(minutes > 0 && seconds <= 0) {
+              seconds = 59;
+              minutes--;
+           }
+          
+      timeRemaining.innerText = `${minutes}:${seconds}`;
+    
+      if (minutes <= 0 && seconds <=0) {
+      clearInterval(timer25Function);
+      is25ClockTicking = false;
+      }
+    }, 1000)
+  }
+  ```
+
+Then I created a new function called countdown, which took my fiveminute function as an argument, which copied the above function, and then called the five minute function at the end:
+
+``` Javascript
+
+function countdown(timer5Function) {
+  is25ClockTicking = true;
+  startTime(5);
+
+  setInterval(function() { 
+      if(seconds > 0) {
+          seconds--;
+      } else if(minutes > 0 && seconds <= 0) {
+          seconds = 59;
+          minutes--;
+       }
+      
+  timeRemaining.innerText = `${minutes}:${seconds}`;
+
+  if (minutes <= 0 && seconds <=0) {
+  clearInterval(timer25Function);
+  is25ClockTicking = false;
+  }
+  console.log(is25ClockTicking)
+}, 
+      1000);
+timer5Function();   
+}
+
+```
+
+The problem was, it didn't work!
+I console.logged and realised that my issue was that my timer kept ticking (the function didn't finish) even after my timer had reached zero. In order for the next function to be executed, I needed to make sure that function finished first.
 ### Learnings
 
 - CSS is hard!
