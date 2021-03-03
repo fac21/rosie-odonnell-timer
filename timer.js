@@ -1,6 +1,7 @@
 const start = document.getElementById("start-button");
-const restart = document.getElementById("restart-button");
+const reset = document.getElementById("reset-button");
 const pause = document.getElementById("pause-button");
+const resume = document.getElementById("resume-button");
 const startBreak = document.getElementById("start-break-button");
 const timeRemaining = document.getElementById("time-remaining");
 
@@ -10,24 +11,30 @@ let is5ClockTicking = false;
 let minutes = 0;
 let seconds = 0;
 
-let minutesZero;
-let secondsZero;
+let timing;
+let timing2;
+let timing3;
+
+let pause25 = false;
+let pause5 = false;
 
 let breakSession = startTime(300);
 let workSession = startTime(1500);
 
 
-//MY EVENT LISTENERS:
+//EVENT LISTENERS:
 
-timeRemaining.innerHTML = startTime(300);
+timeRemaining.innerHTML = startTime(1500);
 
 start.addEventListener("click", countdown);
 startBreak.addEventListener("click", timer5Function);
-restart.addEventListener("click", timer25Function);
+reset.addEventListener("click", resetFunction);
 pause.addEventListener("click", pauseButton);
+resume.addEventListener("click", resumeCountdown);
 
 
-//   MY FUNCTION FOR ADDING A ZERO IN FRONT 
+// FUNCTION FOR ADDING A ZERO IN FRONT OF SINGLE DIGITS
+
 function addZero() {
 
   if (minutes < 10 && seconds <10) {
@@ -37,101 +44,57 @@ function addZero() {
   } else { if(seconds < 10 ) {
     return `${minutes}:0${seconds}`; 
   }
-       else {
+    else {
     return `${minutes}:${seconds}`; 
-       }
-      } }
-
-  // if (minutes < 10) {
-  //   minutes = `0${minutes}`;
-  // } 
-  //     if (seconds < 10) {
-  //     seconds = `0${seconds}`;
-  //     }  
+      }
+    } 
+  }  
 }
 
-
-// FUNCTION FOR SETTING THE START TIME WHEN PAGE IS OPENED  
+// FUNCTION FOR SETTING THE START TIME WHEN PAGE IS OPENED AND IN EACH FUNCTION
 function startTime(time) {
   minutes = Math.floor(time / 60);
   seconds = time % 60;
-
-  return addZero(); // I have moved the add zero instructions to a separate function, so I can reuse.
-      
+  return addZero();    
 }
 
-// FUNCTION FOR MY 5 MINUTE COUNTDOWN
-
+// FUNCTION FOR MY 5 MINUTE COUNTDOWN WHICH TRIGGERS THE 25:00 COUNTDOWN AT 00:00.
 function timer5Function() {
+  clearInterval(timing);
+  clearInterval(timing2); //This stops our button to start running quickly, as it disables previous click if clicked again.
   is5ClockTicking = true;
-  startTime(30);
-
-  setInterval
-      (function() { if(seconds > 0) {
+  is25ClockTicking = false;
+  startTime(300);
+  timing2 = setInterval(function() { 
+        if(seconds > 0) {
           seconds--;
-      } else if(minutes > 0 && seconds <= 0) {
-          seconds = 59;
-          minutes--;
+          } else if(minutes > 0 && seconds <= 0) {
+            seconds = 59;
+            minutes--;
        }
+       
+    timeRemaining.innerText = addZero();
 
-       timeRemaining.innerText = addZero();
-
-    //    if (minutes < 10) {
-    // timeRemaining.innerText = `0${minutes}:${seconds}`; 
-
-    //    }
-    //    else {
-    // timeRemaining.innerText = `${minutes}:${seconds}`; 
-    //    }
-
-
-  if (minutes == 0 && seconds ==0) {
-  clearInterval(timer5Function);
-  is5ClockTicking = false;
-  }
-  console.log(is5ClockTicking)
-}, 
-      1000)
-
+      if (minutes == 0 && seconds ==0) {
+          alert("fun's over, back to work!");
+          // add noise function here.
+          countdown();
+          clearInterval(timing2);
+          is5ClockTicking = false;
+          } //console.log("5", is5ClockTicking)
+  }, 1000)
 }
 
-// FUNCTION FOR MY 25 MINUTE COUNTDOWN
-
-    function timer25Function() {
-      is25ClockTicking = true;
-      startTime(1500);
-    
-      setInterval
-          (function() { if(seconds > 0) {
-              seconds--;
-          } else if(minutes > 0 && seconds <= 0) {
-              seconds = 59;
-              minutes--;
-           }
-
-          
-           //timeRemaining.innerText = addZero();
-    
-      if (minutes <= 0 && seconds <=0) {
-      clearInterval(timer25Function);
-      is25ClockTicking = false;
-        // HERE I WANT TO SEND YOU TO THE 5 MINUTE FUNCTION, BUT IT EXCEEDS CALLSTACK
-
-      }
-      console.log(is25ClockTicking)
-    }, 
-          1000)
-    }
-    
-
-// CALLBACK FUNCTION FOR 25 MINUTE COUNTDOWN
-// THIS WILL BE MY FUNCTION SO THAT THE 25 MINUTE COUNTDOWN TRIGGERS THE 5 MINUTE COUNTDOWN AT 00:00
-
-function countdown(timer5Function) {
+// FUNCTION FOR 25 MINUTE COUNTDOWN WHICH TRIGGERS THE 5 MINUTE COUNTDOWN AT 00:00.
+function countdown() {
+  start.innerHTML = "RESTART"; //}
+  clearInterval(timing); //This stops our button to start running quickly, as it disables previous click if clicked again.
+  clearInterval(timing2); //This clears the countdown in case 5:00 is running - means we can switch between the timers.
   is25ClockTicking = true;
-  startTime(5);
+  is5ClockTicking = false;
+  startTime(1500);
 
-  setInterval(function() { 
+  timing = setInterval(function() { 
       if(seconds > 0) {
           seconds--;
       } else if(minutes > 0 && seconds <= 0) {
@@ -139,35 +102,114 @@ function countdown(timer5Function) {
           minutes--;
        }
       
-  timeRemaining.innerText = `${minutes}:${seconds}`;
+    timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
 
-  if (minutes <= 0 && seconds <=0) {
-  clearInterval(timer25Function);
-  is25ClockTicking = false;
-    // HERE I WANT TO SEND YOU TO THE 5 MINUTE FUNCTION, BUT IT EXCEEDS CALLSTACK
-  }
-  console.log(is25ClockTicking)
-}, 
-      1000);
-// The issue is that the above function isn't ending, which is why this function below isn't working
-timer5Function();   
-console.log(timer5Function);  
+      if (minutes <= 0 && seconds <=0) {
+      alert("break time!");
+      timer5Function();    // Second function: triggered if our countdown has reached zero
+      clearInterval(timing); // Clear the timing function
+      is25ClockTicking = false; //Let our buttons know the 25 minute funtion is not happening
+    
+      } console.log("25", is25ClockTicking)
+}, 1000); //console.log(timer5Function);  
 }
-//timer5Function();
-//}
- 
 
 
-
-//MY PAUSE BUTTON
+// FUNCTION FOR PAUSE BUTTON
 
 function pauseButton() {
-  if (is25ClockTicking) {
-  clearInterval(timer25Function)
-} else {
-  clearInterval(timer5Function)
+  if(is25ClockTicking) {
+clearInterval(timing);
+//pause.innerHTML = "RESUME";
+pause25 = true;
+console.log("pause25", pause25)
+
+} else if (is5ClockTicking) {
+
+  clearInterval(timing2);
+  //pause.innerHTML = "RESUME";
+  pause5 = true;
+  console.log("pause5", pause5)
 }
 }
 
+// FUNCTION FOR RESUMING COUNTDOWN FROM PAUSE
+function resumeCountdown() {
+if (pause25) {
+  
+  timing = setInterval(function() { 
+    if(seconds > 0) {
+        seconds--;
+    } else if(minutes > 0 && seconds <= 0) {
+        seconds = 59;
+        minutes--;
+     }
+
+  timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
+
+    if (minutes <= 0 && seconds <=0) {
+    alert("break time!");
+    timer5Function();    // Second function: triggered if our countdown has reached zero
+    clearInterval(timing); // Clear the timing function
+    is25ClockTicking = false; //Let our buttons know the 25 minute function is not happening
+  
+    } console.log("25", is25ClockTicking)
+}, 1000); //console.log(timer5Function);  
+}
+
+if (pause5) {
+  timing2 = setInterval(function() { 
+    if(seconds > 0) {
+        seconds--;
+    } else if(minutes > 0 && seconds <= 0) {
+        seconds = 59;
+        minutes--;
+     }
+
+  timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
+
+    if (minutes <= 0 && seconds <=0) {
+    alert("fun's over, back to work!");
+    timer25Function();    // Second function: triggered if our countdown has reached zero
+    clearInterval(timing2); // Clear the timing function
+    is5ClockTicking = false; //Let our buttons know the 25 minute function is not happening
+  
+    } console.log("5", is5ClockTicking)
+}, 1000); //console.log(timer5Function);  
+}
+}
+
+
+
+
+
+
+//     is25ClockTicking = false;
+//   }
+//     if(!is25ClockTicking) {
+//   timer25Function();
+//     }
+// } else {
+//   clearInterval(timer5Function)
+// }
+// }
+
+function resetFunction() {
+  start.innerHTML = "START";
+  pause.innerHTML = "PAUSE";
+
+  clearInterval(timing);
+  clearInterval(timing2);
+  timeRemaining.innerHTML = "25:00"
+
+}
+
+//   if (is25ClockTicking) {
+//   clearInterval(timing);
+//   timeRemaining.innerHTML = "25:00"
+// } else clearInterval(timing2);
+//   timeRemaining.innerHTML = "25:00"
+// //startTime(1500);
+// }
 
 

@@ -1,3 +1,4 @@
+
 .center {
     max-width: 30rem;
     margin-left: auto;
@@ -22,31 +23,35 @@
     padding:15rem;
 }
 
+.padding-xs > * + *{
+    padding:0.5rem;
+}
+
 .padding-sm > * {
     padding:5rem;
 }
 
 .padding-md > * {
-    padding:10rem;
+    padding:8rem;
 }
 
 .padding-lg > * {
     padding:20rem;
 }
 
-.stack > * {
-    margin-top: 15rem;
-    margin-bottom: 15rem;
-    margin-left: 15rem;
-    margin-right: 15rem;
+.stack > * + *{
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    /* margin-left: 15rem;
+    margin-right: 15rem; */
   }
 
-.stack-sm > * {
-    margin-top: 10rem;
-    margin-bottom: 10rem;
+.stack-xs > * + *{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.stack-lg > * {
+.stack-lg > * + * {
     margin-top: 20rem;
     margin-bottom: 20rem;
   }
@@ -74,6 +79,7 @@
     margin-bottom: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
+    max-width: 30rem, auto;
 }
 
 #countdown {
@@ -107,6 +113,7 @@ button {
     font-family: inter;
     font-size: 30px;
     font-weight: bold;
+    outline: none;
     color: white;
     width: 250px;
     height: 80px;
@@ -119,7 +126,7 @@ button {
     background-color: #60BE92;
 }
 
-#restart-button {
+#reset-button {
     background-color: #F15B6C;
 }
 
@@ -129,4 +136,8 @@ button {
 
 #start-break-button {
     background-color:black;
+}
+
+#resume-button {
+    background-color:grey;
 }

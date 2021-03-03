@@ -2,7 +2,7 @@
 
 ### Design
 
-1. To begin with, I mocked up what my design would look like using [Figma](https://www.figma.com/) (I find Figma to be more intuitive than Sketch). I went for simple design, using boxes within boxes, to practice my use of containers in HTML/ CSS.
+1. To begin with, I mocked up what my design would look like using [Figma](https://www.figma.com/) (I prefer Figma over Sketch). I went for a simple design, using boxes within boxes, to practice my use of containers in HTML/ CSS.
 
 Here's the mock-up I created on Figma:
 
@@ -24,7 +24,7 @@ I also decided that I wanted to include the following features:
 
 2. Next up, I got all of my elements onto my page, but adding them into my HTML file.
 
-I set the largest outer box as my main div, placing the smaller box inside it in a simple div tag, as I didn't think it required a semantic tag:
+I set the largest outer box as my main div, placing the smaller box inside it in a simple div tag, as I didn't think a  semantic tag was required in this instance:
 
 ``` HTML
 
@@ -210,3 +210,27 @@ I console.logged and realised that my issue was that my timer kept ticking (the 
 ### Learnings
 
 - CSS is hard!
+
+
+
+## Problems and Solutions
+
+- One issue I had was making it possible to click any button at any time and have it carried it out uninterfered, and responsive to the other buttons. For example, when I had all the buttons almost working, I realised that my pause button worked on my 5:00 countdown only if I clicked that first, if I clicked on my 'take a break' button to trigger a five minute countdown, any time except first, my pause and resume wouldn't work!
+
+- One issue I had was that my buttons would jump if pressed twice, or I if I started the break time countdown whilst the work countodnw was still playing. The way I solved this was to add in a clearInterval() for each of the timers, at the beginning of each function:
+
+``` Javascript
+function timer5Function() {
+  clearInterval(timing);
+  clearInterval(timing2); //This stops our button to start running quickly, as it disables previous click if clicked again.
+  is5ClockTicking = true;
+  startTime(300);
+  ```
+
+  That way, the interval was cleared ready to play the function of the click.
+
+
+  - Not enough buttons!
+  I started off with two button: start and restart. I planned to toggle start and pause. However, as I needed this countdown to perform multiple functions, I ended up requiring multiple buttons! By the end I had:
+
+ START, PAUSE, RESUME, BREAKTIME, RESET
