@@ -113,6 +113,7 @@ button {
     font-family: inter;
     font-size: 30px;
     font-weight: bold;
+    outline: none;
     color: white;
     width: 250px;
     height: 80px;
@@ -125,7 +126,7 @@ button {
     background-color: #60BE92;
 }
 
-#restart-button {
+#reset-button {
     background-color: #F15B6C;
 }
 
@@ -135,4 +136,8 @@ button {
 
 #start-break-button {
     background-color:black;
+}
+
+#resume-button {
+    background-color:grey;
 }
