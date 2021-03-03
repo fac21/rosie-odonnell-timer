@@ -24,7 +24,7 @@
 }
 
 .padding-xs > * + *{
-    padding:2rem;
+    padding:0.5rem;
 }
 
 .padding-sm > * {
@@ -39,19 +39,19 @@
     padding:20rem;
 }
 
-.stack > * {
-    margin-top: 15rem;
-    margin-bottom: 15rem;
-    margin-left: 15rem;
-    margin-right: 15rem;
+.stack > * + *{
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    /* margin-left: 15rem;
+    margin-right: 15rem; */
   }
 
-.stack-xs > * {
+.stack-xs > * + *{
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.stack-lg > * {
+.stack-lg > * + * {
     margin-top: 20rem;
     margin-bottom: 20rem;
   }
