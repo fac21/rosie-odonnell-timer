@@ -1,3 +1,4 @@
+
 .center {
     max-width: 30rem;
     margin-left: auto;
@@ -22,12 +23,16 @@
     padding:15rem;
 }
 
+.padding-xs > * + *{
+    padding:2rem;
+}
+
 .padding-sm > * {
     padding:5rem;
 }
 
 .padding-md > * {
-    padding:10rem;
+    padding:8rem;
 }
 
 .padding-lg > * {
@@ -41,9 +46,9 @@
     margin-right: 15rem;
   }
 
-.stack-sm > * {
-    margin-top: 10rem;
-    margin-bottom: 10rem;
+.stack-xs > * {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .stack-lg > * {
@@ -74,6 +79,7 @@
     margin-bottom: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
+    max-width: 30rem, auto;
 }
 
 #countdown {

@@ -2,7 +2,7 @@
 
 ### Design
 
-1. To begin with, I mocked up what my design would look like using [Figma](https://www.figma.com/) (I find Figma to be more intuitive than Sketch). I went for simple design, using boxes within boxes, to practice my use of containers in HTML/ CSS.
+1. To begin with, I mocked up what my design would look like using [Figma](https://www.figma.com/) (I prefer Figma over Sketch). I went for a simple design, using boxes within boxes, to practice my use of containers in HTML/ CSS.
 
 Here's the mock-up I created on Figma:
 
@@ -24,7 +24,7 @@ I also decided that I wanted to include the following features:
 
 2. Next up, I got all of my elements onto my page, but adding them into my HTML file.
 
-I set the largest outer box as my main div, placing the smaller box inside it in a simple div tag, as I didn't think it required a semantic tag:
+I set the largest outer box as my main div, placing the smaller box inside it in a simple div tag, as I didn't think a  semantic tag was required in this instance:
 
 ``` HTML
 
