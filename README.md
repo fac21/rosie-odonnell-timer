@@ -234,3 +234,6 @@ function timer5Function() {
   I started off with two button: start and restart. I planned to toggle start and pause. However, as I needed this countdown to perform multiple functions, I ended up requiring multiple buttons! By the end I had:
 
  START, PAUSE, RESUME, BREAKTIME, RESET
+
+
+ - The solution to the above problem, actually created another one for me in the shape of my resume button. As I had set my two timers - 5 mins and 25 mins - to clear the interval before they started, I couldn't link my resume button to setInterval() using them, as those functions reset the clock. I tried to re-write the functions within the resume function, leaving out clearInterval() at the beginning, but of course, that meant that that button ran into the same issue I had just solved.

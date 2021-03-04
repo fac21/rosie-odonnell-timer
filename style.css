@@ -14,16 +14,20 @@
 .width-sm {
     max-width: 10rem;
   }
+
+.width-md {
+    max-width: 40rem;
+}
   
 .width-lg {
-    max-width: 40rem;
+    max-width: 70rem;
   }
 
 .padding > * {
     padding:15rem;
 }
 
-.padding-xs > * + *{
+.padding-xs > *{
     padding:0.5rem;
 }
 
@@ -39,14 +43,14 @@
     padding:20rem;
 }
 
-.stack > * + *{
+.stack > * + * {
     margin-top: 8rem;
     margin-bottom: 8rem;
     /* margin-left: 15rem;
     margin-right: 15rem; */
   }
 
-.stack-xs > * + *{
+.stack-xs > * + * {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
@@ -79,7 +83,9 @@
     margin-bottom: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    max-width: 30rem, auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    /* max-width: 30rem, auto; */
 }
 
 #countdown {
@@ -111,12 +117,12 @@ img {
 
 button {
     font-family: inter;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     outline: none;
     color: white;
-    width: 250px;
-    height: 80px;
+    width: 200px;
+    height: 60px;
     border: none;
     border-radius: 15px;
 
@@ -131,13 +137,14 @@ button {
 }
 
 #pause-button {
-    background-color:#E7ABAF;
+    background-color:#F67685;
 }
 
 #start-break-button {
     background-color:black;
+    
 }
 
 #resume-button {
-    background-color:grey;
+    background-color:#4FA07A;
 }
