@@ -153,7 +153,7 @@ function timer25Function() {
   is5ClockTicking = false;
   startTime(1500);
 
-  var timing3 = setInterval(function() { 
+  timing3 = setInterval(function() { 
         if(seconds > 0) {
           seconds--;
           } else if(minutes > 0 && seconds <= 0) {
