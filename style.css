@@ -16,7 +16,7 @@
   }
 
 .width-md {
-    max-width: 40rem;
+    max-width: 60rem;
 }
   
 .width-lg {
@@ -50,9 +50,9 @@
     margin-right: 15rem; */
   }
 
-.stack-xs > * + * {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.stack-xs > * {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .stack-lg > * + * {
@@ -68,8 +68,8 @@
     justify-content: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 #inner-box {
@@ -77,11 +77,8 @@
     border-radius: 15px;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
     padding-right: 1rem;
     padding-left: 1rem;
-    /* max-width: 30rem, auto; */
 }
 
 #countdown {
@@ -106,7 +103,8 @@ img {
 #buttons {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: space-between;
     gap: 50px;
     flex-wrap: wrap;
 }
@@ -149,13 +147,15 @@ button {
 @media only screen and (max-width: 600px) {
 
     #inner-box {
-        max-width: 80%;
+        max-width: 90%;
         padding: 2rem;
+        margin: 1rem;
     }
     
     #outer-box {
-        max-width: 90%;
+        max-width: 100%;
         padding: 2rem;
+        margin: 1rem;
     }
 
     #countdown {
