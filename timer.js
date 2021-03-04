@@ -6,6 +6,8 @@ const startBreak = document.getElementById("start-break-button");
 const timeRemaining = document.getElementById("time-remaining");
 const outerBox = document.getElementById("outer-box");
 const innerBox = document.getElementById("inner-box");
+const workAlarm = document.getElementById("work-alarm");
+const breakAlarm = document.getElementById("break-alarm");
 
 let is25ClockTicking = false;
 let is5ClockTicking = false;
@@ -76,7 +78,7 @@ function timer5Function() {
 
   is5ClockTicking = true;
   is25ClockTicking = false;
-  startTime(5);
+  startTime(300);
   timing2 = setInterval(function() { 
         if(seconds > 0) {
           seconds--;
@@ -90,6 +92,7 @@ function timer5Function() {
       if (minutes == 0 && seconds ==0) {
           //alert("fun's over, back to work!");
           // add noise function here.
+          playAudioWork();
           countdown();
           clearInterval(timing2);
           is5ClockTicking = false;
@@ -112,7 +115,7 @@ function countdown() {
 
   is25ClockTicking = true;
   is5ClockTicking = false;
-  startTime(15);
+  startTime(1500);
 
   timing = setInterval(function() { 
       if(seconds > 0) {
@@ -125,7 +128,7 @@ function countdown() {
     timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
 
       if (minutes <= 0 && seconds <=0) {
-      //alert("break time!");
+      playAudioBreak();
       timer5Function();    // Second function: triggered if our countdown has reached zero
       clearInterval(timing); // Clear the timing function
       is25ClockTicking = false; //Let our buttons know the 25 minute funtion is not happening
@@ -148,7 +151,7 @@ function timer25Function() {
 
   is25ClockTicking = true;
   is5ClockTicking = false;
-  startTime(5);
+  startTime(1500);
 
   setInterval(function() { 
         if(seconds > 0) {
@@ -161,6 +164,7 @@ function timer25Function() {
     timeRemaining.innerText = addZero();
 
       if (minutes <= 0 && seconds <=0) {
+          playAudioBreak();
           clearInterval(timer25Function);
           is25ClockTicking = false;
           } //console.log("25", is25ClockTicking)
@@ -206,7 +210,7 @@ function resumeCountdown() {
         timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
       
           if (minutes <= 0 && seconds <=0) {
-          //alert("break time!");
+          playAudioBreak();
           timer5Function();    // Second function: triggered if our countdown has reached zero
           clearInterval(timing); // Clear the timing function
           is25ClockTicking = false; //Let our buttons know the 25 minute function is not happening
@@ -227,7 +231,7 @@ function resumeCountdown() {
     timeRemaining.innerText = addZero(); //this is making sure 0 is added to any value less than 10.
   
       if (minutes <= 0 && seconds <=0) {
-      //alert("fun's over, back to work!");
+      playAudioWork();
       countdown();    // Second function: triggered if our countdown has reached zero
       clearInterval(timing2); // Clear the timing function
       is5ClockTicking = false; //Let our buttons know the 25 minute function is not happening
@@ -253,4 +257,14 @@ function resetFunction() {
 
 }
 
+// FUNCTION PLAY WORK ALARM
 
+function playAudioWork() {
+  workAlarm.play();
+}
+
+// FUNCTION PLAY BREAK ALARM
+
+function playAudioBreak() {
+  breakAlarm.play();
+}

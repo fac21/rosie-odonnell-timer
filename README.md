@@ -1,3 +1,11 @@
+# Pomodoro Timer
+
+This week, our challenge was to create a [Pomodoro Timer](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+
+### [Here's mine!](https://fac21.github.io/rosie-odonnell-timer/)
+
+<br />
+
 # My Process
 
 ## Design
@@ -109,13 +117,15 @@ I have three issues which are yet to be resolved:
 
 I found the javascript element of this workshop extremely challenging. This was my first experience working with play/resume/reset buttons, and once I had started to get the hang of things, I found this work really rewarding.
 
+I know that my code could do with **a lot** of improvements, especially simplifying and shortening.
+
 I spent a long time sitting and thinking of the best order to tackle this problem.
 I knew that although I have pieces of the necessary knowledge in my head already, I'd also need to rely on the online community to get things working.
 
-I decided that first of all, I wanted to get the countdown timer working. To create my digital clock, I used (this codewars challenge)[https://www.codewars.com/kata/52685f7382004e774f0001f7] but altered it to remove the hours part.
+To create my digital clock, I used (this codewars challenge)[https://www.codewars.com/kata/52685f7382004e774f0001f7] but altered it to remove the hours part.
 
 
-After sleeping on it, I went back to my counter and realised my problem:
+
 
 I got my countdown working (although I still needed to add the 0 in front of single digits):
 ``` Javascript
@@ -138,8 +148,9 @@ but what I wanted now was for my timer5Function to be called once this function 
 
 ### Callbacks
 
-I worked hard on getting a callback function to work this week, in order to call the 5 minute countdown function once the 25 minute countdown function had completed.
-I started by creating two separate functions for. Here's one of them:
+I worked hard on getting a callback function to work this week, in order to call the 5 minute countdown function once the 25 minute countdown function had completed. However, ultimately, I wasn't able to get it working.
+
+I started by creating two separate functions fors. Here's one of them:
 
 ``` Javascript 
  function timer25Function() {

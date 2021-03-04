@@ -11,19 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <audio id="work-alarm"src="workAlarm.mp3" preload="auto"></audio>
+    <audio id="break-alarm"src="breakAlarm.mp3" preload="auto"></audio>
+
     <main id="outer-box" class="center, padding-md">
         <div id="inner-box" class="stack-xs, padding-xs">
         <section id="countdown">
-            <img src="tomato.png" class="tomato">
+            <img alt="cartoon tomato" src="tomato.png" class="tomato">
             <span id="time-remaining"></span>
-            <img src="tomato.png" class="tomato">
+            <img alt="carton tomato" src="tomato.png" class="tomato">
         </section>
         <section id="buttons">
-            <button id="start-button">START
-                <audio id="alarm-sound">
-                    <source src="" type="audio/mpeg">
-                </audio>
-            </button>
+            <button id="start-button">START</button>
             <button id="pause-button">PAUSE</button>
             <button id="resume-button">RESUME</button>
             <button id="reset-button">RESET</button>
