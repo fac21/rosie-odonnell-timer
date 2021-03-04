@@ -125,24 +125,24 @@ button {
 }
 
 #start-button {
-    background-color: #60BE92;
+    background-color: #189A5D;
 }
 
 #reset-button {
-    background-color: #F15B6C;
+    background-color: #F44B5F;
 }
 
 #pause-button {
-    background-color:#F67685;
-}
-
-#start-break-button {
-    background-color:black;
+    background-color:#22C277;
     
 }
 
+#start-break-button {
+    background-color: black;  
+}
+
 #resume-button {
-    background-color:#4FA07A;
+    background-color: #F97281;
 }
 
 
