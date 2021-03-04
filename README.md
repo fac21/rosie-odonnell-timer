@@ -206,12 +206,15 @@ function pauseButton() {
 }
 ```
 
-My problem was that I wasn't using the clearInterval() function correctly. Rather than the argument being timer25Function, I needed the argument to a variable which the function *within* that function is assigned to (I've cut out some of the code in the function for readability here ):
+My problem was that I wasn't using the clearInterval() function correctly. Rather than the argument being timer25Function, I needed the argument to be the variable which the function *within* that function is assigned to (I've cut out some of the code in the function for readability here):
 
 ``` Javascript
-function timer25Function() {
-  
-  setInterval(function() { 
+
+let timing3;
+
+function countdown() {
+
+  timing = setInterval(function() { 
         if(seconds > 0) {
           seconds--;
           } else if(minutes > 0 && seconds <= 0) {
@@ -219,30 +222,44 @@ function timer25Function() {
               minutes--;
         }
 
+```
 
-- One issue I had was that my buttons would jump if pressed twice, or I if I started the break time countdown whilst the work countodnw was still playing. The way I solved this was to add in a clearInterval() for each of the timers, at the beginning of each function:
+Then, I used this variable as the argument, which got it working:
+
+``` Javascript
+
+function pauseButton() {
+  if(is25ClockTicking) {
+clearInterval(timing);
+pause25 = true;
+
+```
+
+1. Another issue I had was that my buttons would jump if pressed twice, or if I started the break time countdown whilst the work countodnw was still playing. The way I solved this was to add in a clearInterval() for each of the timers, at the beginning of each function:
 
 ``` Javascript
 function timer5Function() {
   clearInterval(timing);
-  clearInterval(timing2); //This stops our button to start running quickly, as it disables previous click if clicked again.
+  clearInterval(timing2);
   is5ClockTicking = true;
   startTime(300);
   ```
 
-  That way, the interval was cleared ready to play the function of the click.
+That way, the interval was cleared ready to play the function of the click.
 
 
- 1. The solution to the above problem, actually created another one for me in the shape of my resume button. As I had set my two timers - 5 mins and 25 mins - to clear the interval before they started, I couldn't link my resume button to setInterval() using them, as those functions reset the clock. I tried to re-write the functions within the resume function, leaving out clearInterval() at the beginning, but of course, that meant that that button ran into the same issue I had just solved.
+ 1. The solution to the above problem, actually created another one for me in the shape of my resume button. As I had set my two timers - 5 mins and 25 mins - to clear the interval before they started, I couldn't link my resume button to setInterval() using them, as those functions reset the clock. I tried to re-write the functions within the resume function, leaving out clearInterval() at the beginning, but of course, that meant that that button ran into the same issue I had just solved. In the end, I've resolved the issue by writing a really long, complicated resume() function, and hope to go back and fix this, because although it's working now, it does not look good!
 
  1.  Not enough buttons!
   I started off with two button: start and restart. I planned to toggle start and pause. However, as I needed this countdown to perform multiple functions, I ended up requiring multiple buttons! By the end I had:
 
  START, PAUSE, RESUME, BREAKTIME, RESET
 
+I'd like to get pause and resume working in one button.
 
+<br />
 
- ## Other things I've learnt
+ # Additional learnings:
 
- I've really understood the powers of commits to Github this week, I've gone back through commits to start again when I've coded myself into more bugs than before, or when I was looking for certain piece of CSS styling. I know everyone raves about how good it is to access all your saves, but now I finally *get* it!
+ - I've really understood the powers of commits to Github this week, I've gone back through commits to start again when I've coded myself into more bugs than before, or when I was looking for certain piece of CSS styling. I know everyone raves about how good it is to access all your saves, but now I finally *get* it!
 
