@@ -263,3 +263,4 @@ I'd like to get pause and resume working in one button.
 
  - I've really understood the powers of commits to Github this week, I've gone back through commits to start again when I've coded myself into more bugs than before, or when I was looking for certain piece of CSS styling. I know everyone raves about how good it is to access all your saves, but now I finally *get* it!
 
+- If you want to use a centre class to give a max-width to an element, you also need to give it a width. I had loads of issues where the center tag wasn't being applied, because I hadn't applied a width.
